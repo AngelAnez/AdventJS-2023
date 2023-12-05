@@ -1,4 +1,3 @@
-function findFirstRepeated(gifts) {
-  let repeatedList = gifts.filter((element,index,arr) => arr.indexOf(element) != index)
-  return repeatedList[0] ?? -1
+function findFirstRepeated(gifts) { 
+  return gifts.find((e,i,arr) => arr.indexOf(e) != i) ?? -1
 }
