@@ -1,9 +1,13 @@
 function maxDistance(movements){
-    let number = 0
-    movements.split("").sort().reverse().forEach(element => {
-      element == "<" && number--
-      element == ">" && number++
-      element == "*" && (number < 0 ? number-- : number++)
-    })
-    return Math.abs(number)
+  const options = {
+    "<" : -1,
+    ">" : 1
+  }
+  movements = movements.split("").sort().reverse()
+  movements.unshift(0)
+  return Math.abs(movements.reduce((distance,element) => {
+    element != "*" && (distance = distance + options[element])
+    element == "*" && (distance < 0 ? distance-- : distance++)
+    return distance
+  }))
 }
